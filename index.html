@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Lollapalooza Brasil 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-badge">20 – 22 Março 2026</div>
+      <h1>
+        AGENDA LOLLAPALOOZA <span class="country">BRASIL</span>
+        <span class="year">2026</span>
+      </h1>
+      <p class="hero-sub">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"
+          />
+        </svg>
+        Autódromo de Interlagos, São Paulo
+      </p>
+    </header>
+
+    <nav class="day-nav">
+      <div class="day-tabs" id="dayTabs"></div>
+    </nav>
+
+    <!-- SEARCH -->
+    <main class="content">
+      <section class="search-bar">
+        <svg
+          class="search-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.3-4.3" />
+        </svg>
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Buscar artista..."
+          autocomplete="off"
+        />
+      </section>
+      <div class="search-results-info" id="searchInfo"></div>
+      <div class="no-results" id="noResults">
+        <div class="emoji">🎵</div>
+        Nenhum artista encontrado.
+      </div>
+      <div id="scheduleContainer">
+        <span class="error-data">Erro ao carregar dados.</span>
+        <div class="loader"><span></span><span></span><span></span></div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      Esse site não tem nenhuma vínculo com o LOLLAPALOOZA BRASIL, muito menos
+      responsabilidade pelos horários dos shows.
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

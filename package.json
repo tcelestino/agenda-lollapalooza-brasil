@@ -1,0 +1,11 @@
+{
+  "name": "@tcelestino/agenda-lollapalooza",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx serve"
+  },
+  "author": "Tiago Celestino <tcelestino@gmail.com>",
+  "license": "MIT"
+}

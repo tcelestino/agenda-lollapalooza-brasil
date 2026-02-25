@@ -1,0 +1,239 @@
+{
+  "event": "Agenda Lollapalooza Brasil 2026",
+  "location": "Autódromo de Interlagos, São Paulo",
+  "days": [
+    {
+      "date": "2026-03-20",
+      "label": "Sexta-feira",
+      "dayNumber": 1,
+      "stages": [
+        {
+          "name": "Palco Budweiser",
+          "color": "#E4002B",
+          "acts": [
+            { "artist": "Stefanie", "start": "12:45", "end": "13:40" },
+            { "artist": "Negra Li", "start": "14:45", "end": "15:45" },
+            { "artist": "Blood Orange", "start": "16:55", "end": "17:55" },
+            { "artist": "Doechii", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Sabrina Carpenter",
+              "start": "21:30",
+              "end": "23:00",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Samsung Galaxy",
+          "color": "#1428A0",
+          "acts": [
+            {
+              "artist": "Atração pela 89 FM",
+              "start": "12:00",
+              "end": "12:45"
+            },
+            { "artist": "Terraplana", "start": "13:40", "end": "14:40" },
+            { "artist": "Viagra Boys", "start": "15:50", "end": "16:50" },
+            { "artist": "Interpol", "start": "18:00", "end": "19:00" },
+            {
+              "artist": "Deftones",
+              "start": "20:10",
+              "end": "21:25",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Flying Fish",
+          "color": "#00A86B",
+          "acts": [
+            { "artist": "Worst", "start": "12:45", "end": "13:40" },
+            { "artist": "Scalene", "start": "14:45", "end": "15:45" },
+            { "artist": "Ruel", "start": "16:55", "end": "17:55" },
+            { "artist": "Men I Trust", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Edson Gomes",
+              "start": "21:30",
+              "end": "22:30",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Perry's",
+          "color": "#FF6B00",
+          "acts": [
+            { "artist": "Camila Jun", "start": "12:00", "end": "13:00" },
+            { "artist": "Bruna Strait", "start": "13:00", "end": "14:00" },
+            { "artist": "Atkö", "start": "14:15", "end": "15:15" },
+            { "artist": "Aline Rocha", "start": "15:30", "end": "16:30" },
+            { "artist": "Horsegirl", "start": "16:45", "end": "17:45" },
+            { "artist": "DJ Diesel", "start": "18:00", "end": "19:00" },
+            { "artist": "Bunt.", "start": "19:15", "end": "20:15" },
+            { "artist": "Ben Böhmer", "start": "20:30", "end": "21:45" },
+            {
+              "artist": "Kygo",
+              "start": "22:15",
+              "end": "23:30",
+              "headline": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-21",
+      "label": "Sábado",
+      "dayNumber": 2,
+      "stages": [
+        {
+          "name": "Palco Budweiser",
+          "color": "#E4002B",
+          "acts": [
+            { "artist": "Jadsa", "start": "12:45", "end": "13:40" },
+            { "artist": "Agnes Nunes", "start": "14:45", "end": "15:45" },
+            { "artist": "Marina", "start": "16:55", "end": "17:55" },
+            { "artist": "Lewis Capaldi", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Chappell Roan",
+              "start": "21:30",
+              "end": "23:00",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Samsung Galaxy",
+          "color": "#1428A0",
+          "acts": [
+            { "artist": "Hurricanes", "start": "12:00", "end": "12:45" },
+            { "artist": "Varanda", "start": "13:40", "end": "14:40" },
+            { "artist": "Foto em Grupo", "start": "15:50", "end": "16:50" },
+            { "artist": "Cypress Hill", "start": "18:00", "end": "19:00" },
+            {
+              "artist": "Skrillex",
+              "start": "20:10",
+              "end": "21:25",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Flying Fish",
+          "color": "#00A86B",
+          "acts": [
+            { "artist": "Artur Menezes", "start": "12:45", "end": "13:40" },
+            { "artist": "Cidade Dormitório", "start": "14:45", "end": "15:45" },
+            { "artist": "The Warning", "start": "16:55", "end": "17:55" },
+            { "artist": "TV Girl", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Riize",
+              "start": "21:30",
+              "end": "22:30",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Perry's",
+          "color": "#FF6B00",
+          "acts": [
+            { "artist": "Blackat", "start": "12:00", "end": "12:45" },
+            { "artist": "Marcelino Brabo", "start": "13:00", "end": "13:45" },
+            { "artist": "Crizin da Z.O.", "start": "14:15", "end": "15:15" },
+            { "artist": "Febre90s", "start": "15:30", "end": "16:30" },
+            { "artist": "N.I.N.A", "start": "16:45", "end": "17:45" },
+            { "artist": "Hamdi", "start": "18:00", "end": "19:00" },
+            {
+              "artist": "2hollis + Rommulas",
+              "start": "19:15",
+              "end": "20:15"
+            },
+            { "artist": "Mu540", "start": "20:30", "end": "21:30" },
+            {
+              "artist": "Brutalismus 3000",
+              "start": "22:00",
+              "end": "23:30",
+              "headline": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-03-22",
+      "label": "Domingo",
+      "dayNumber": 3,
+      "stages": [
+        {
+          "name": "Palco Budweiser",
+          "color": "#E4002B",
+          "acts": [
+            { "artist": "Papisa", "start": "12:45", "end": "13:40" },
+            { "artist": "Mundo Livre S/A", "start": "14:45", "end": "15:45" },
+            { "artist": "Djo", "start": "16:55", "end": "17:55" },
+            { "artist": "Turnstile", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Tyler, The Creator",
+              "start": "21:30",
+              "end": "22:45",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Samsung Galaxy",
+          "color": "#1428A0",
+          "acts": [
+            { "artist": "Jonabug", "start": "12:00", "end": "12:45" },
+            { "artist": "Nina Maia", "start": "13:40", "end": "14:40" },
+            { "artist": "Royel Otis", "start": "15:50", "end": "16:50" },
+            { "artist": "Addison Rae", "start": "18:00", "end": "19:00" },
+            {
+              "artist": "Lorde",
+              "start": "20:10",
+              "end": "21:25",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Flying Fish",
+          "color": "#00A86B",
+          "acts": [
+            { "artist": "Papangu", "start": "12:45", "end": "13:40" },
+            { "artist": "Oruã", "start": "14:45", "end": "15:45" },
+            { "artist": "Balu Brigada", "start": "16:55", "end": "17:55" },
+            { "artist": "FBC", "start": "19:05", "end": "20:05" },
+            {
+              "artist": "Katseye",
+              "start": "21:30",
+              "end": "22:30",
+              "headline": true
+            }
+          ]
+        },
+        {
+          "name": "Palco Perry's",
+          "color": "#FF6B00",
+          "acts": [
+            { "artist": "Flávia Durante", "start": "12:00", "end": "12:45" },
+            { "artist": "Entropia", "start": "13:00", "end": "13:45" },
+            { "artist": "Analu", "start": "14:00", "end": "14:45" },
+            { "artist": "Alírio", "start": "15:15", "end": "16:15" },
+            { "artist": "Idlibra", "start": "16:30", "end": "17:30" },
+            { "artist": "Zopelar", "start": "17:45", "end": "18:45" },
+            { "artist": "Roz", "start": "19:00", "end": "20:00" },
+            { "artist": "¥0u$uk€ ¥uk1mat$u", "start": "20:15", "end": "21:30" },
+            {
+              "artist": "Peggy Gou",
+              "start": "21:45",
+              "end": "23:15",
+              "headline": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
