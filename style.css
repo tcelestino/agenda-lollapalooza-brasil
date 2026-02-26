@@ -459,7 +459,7 @@ body {
 .footer {
   text-align: center;
   padding: 24px;
-  color: var(--text-dim);
+  color: var(--text);
   font-size: 0.7rem;
   opacity: 0.5;
   letter-spacing: 0.06em;
