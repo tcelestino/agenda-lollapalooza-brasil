@@ -31,11 +31,11 @@ function buildTabs() {
   const tabsEl = document.getElementById("dayTabs");
   tabsEl.innerHTML = "";
   scheduleData.days.forEach((day, i) => {
-    const btn = document.createElement("button");
-    btn.className = "day-tab" + (i === 0 ? " active" : "");
-    btn.innerHTML = `${day.label}<small>${formatDate(day.date)}</small>`;
-    btn.addEventListener("click", () => switchDay(i));
-    tabsEl.appendChild(btn);
+    const li = document.createElement("li");
+    li.className = "day-tab" + (i === 0 ? " active" : "");
+    li.innerHTML = `${day.label}<small>${formatDate(day.date)}</small>`;
+    li.addEventListener("click", () => switchDay(i));
+    tabsEl.appendChild(li);
   });
 }
 

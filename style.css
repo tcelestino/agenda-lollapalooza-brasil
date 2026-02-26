@@ -10,6 +10,9 @@
   --accent-per: #ff8c42;
   --radius: 12px;
   --radius-sm: 8px;
+  --color-mkt_1: #4aa494;
+  --color-mkt_2: #c1ff03;
+  --color-mkt_3: #3ac7e3;
 }
 
 * {
@@ -77,22 +80,25 @@ body {
   position: relative;
   z-index: 1;
   animation: fadeUp 0.6s 0.1s ease both;
-}
-
-.hero .country,
-.hero .year {
-  display: inline-block;
-}
-
-.hero .country {
-  background: linear-gradient(-50deg, #4aa494, #3ac7e3, #c1ff03);
+  background: linear-gradient(
+    -50deg,
+    var(--color-mkt_1),
+    var(--color-mkt_3),
+    var(--color-mkt_2)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero .year {
-  background: linear-gradient(100deg, #4aa494, #3ac7e3, #c1ff03);
+  display: inline-block;
+  background: linear-gradient(
+    100deg,
+    var(--color-mkt_1),
+    var(--color-mkt_3),
+    var(--color-mkt_2)
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -136,6 +142,7 @@ body {
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  list-style: none;
 }
 .day-tabs::-webkit-scrollbar {
   display: none;
@@ -174,7 +181,7 @@ body {
   left: 16px;
   right: 16px;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-bud), var(--accent-per));
+  background: linear-gradient(90deg, var(--color-mkt_1), var(--color-mkt_2));
   border-radius: 2px;
   transform: scaleX(0);
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -456,6 +463,10 @@ body {
   font-size: 0.7rem;
   opacity: 0.5;
   letter-spacing: 0.06em;
+}
+
+.footer a {
+  color: #fff;
 }
 
 /* === LOADING === */
