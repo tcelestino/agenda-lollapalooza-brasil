@@ -12,18 +12,3 @@ Acesse: https://tcelestino.github.io/agenda-lollapalooza-brasil/
 npm run dev
 ```
 Acesse `http://localhost:3000` no navegador.
-
-## Estrutura
-
-```
-.
-├── index.html   # Estrutura da página
-├── style.css    # Estilos
-├── script.js    # Lógica de renderização e busca
-├── data.json    # Dados da programação
-└── package.json
-```
-
-## Licença
-
-MIT
