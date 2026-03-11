@@ -432,16 +432,46 @@ body {
   padding: 4px 0;
 }
 
+#favoritesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
 .fav-group {
   background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: var(--radius);
-  margin-bottom: 16px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.fav-group:last-child {
-  margin-bottom: 0;
+.fav-group .acts-list {
+  flex: 1;
+}
+
+.fav-group .act-row {
+  grid-template-columns: 110px 1fr auto;
+}
+
+.fav-group .act-row.headline .act-artist {
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: none;
+  -webkit-text-fill-color: unset;
+}
+
+@media (max-width: 600px) {
+  #favoritesContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .fav-group .act-row {
+    grid-template-columns: 90px 1fr auto;
+  }
 }
 
 /* === FAV BUTTON === */
