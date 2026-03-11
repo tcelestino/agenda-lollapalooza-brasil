@@ -453,7 +453,26 @@ body {
 }
 
 .fav-group .act-row {
-  grid-template-columns: 110px 1fr auto;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2px 8px;
+}
+
+.fav-group .act-time {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 0.75rem;
+}
+
+.fav-group .act-artist {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.fav-group .fav-btn {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
 }
 
 .fav-group .act-row.headline .act-artist {
@@ -470,7 +489,7 @@ body {
   }
 
   .fav-group .act-row {
-    grid-template-columns: 90px 1fr auto;
+    grid-template-columns: 1fr auto;
   }
 }
 
