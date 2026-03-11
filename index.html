@@ -66,6 +66,88 @@
     ></script>
   </head>
   <body>
+    <!-- BOOKMARK BAR -->
+    <div class="bookmark-bar" id="bookmarkBar">
+      <button class="bookmark-bar-btn" id="bookmarkBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+          <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>
+        </svg>
+        Salve esta página nos seus favoritos
+      </button>
+      <button class="bookmark-bar-dismiss" id="bookmarkBarDismiss" aria-label="Fechar aviso">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- BOOKMARK MODAL -->
+    <div class="bookmark-modal" id="bookmarkModal" role="dialog" aria-modal="true" aria-labelledby="bookmarkModalTitle">
+      <div class="bookmark-modal-overlay" id="bookmarkModalOverlay"></div>
+      <div class="bookmark-modal-box">
+        <button class="bookmark-modal-close" id="bookmarkModalClose" aria-label="Fechar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6 6 18M6 6l12 12"/>
+          </svg>
+        </button>
+        <h2 class="bookmark-modal-title" id="bookmarkModalTitle">Adicionar aos favoritos</h2>
+        <p class="bookmark-modal-subtitle">Salve esta página para acessá-la rapidamente durante o festival.</p>
+        <div class="bookmark-tabs">
+          <button class="bookmark-tab" data-tab="desktop">Desktop</button>
+          <button class="bookmark-tab" data-tab="ios">iPhone / iPad</button>
+          <button class="bookmark-tab" data-tab="android">Android</button>
+        </div>
+        <div class="bookmark-panel" data-panel="desktop">
+          <ol class="bookmark-steps">
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">1</span>
+              <span class="bookmark-step-text">Pressione <kbd>Ctrl</kbd> + <kbd>D</kbd> (Windows/Linux) ou <kbd>Cmd</kbd> + <kbd>D</kbd> (Mac)</span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">2</span>
+              <span class="bookmark-step-text">Ou clique no <strong>ícone de estrela</strong> na barra de endereço do navegador</span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">3</span>
+              <span class="bookmark-step-text">Escolha a pasta desejada e confirme para salvar</span>
+            </li>
+          </ol>
+        </div>
+        <div class="bookmark-panel" data-panel="ios">
+          <ol class="bookmark-steps">
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">1</span>
+              <span class="bookmark-step-text">Toque no botão de <strong>Compartilhar</strong> (ícone de caixa com seta para cima) na barra inferior do Safari</span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">2</span>
+              <span class="bookmark-step-text">Role a lista e toque em <strong>"Adicionar aos Favoritos"</strong></span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">3</span>
+              <span class="bookmark-step-text">Confirme o nome e toque em <strong>Salvar</strong></span>
+            </li>
+          </ol>
+        </div>
+        <div class="bookmark-panel" data-panel="android">
+          <ol class="bookmark-steps">
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">1</span>
+              <span class="bookmark-step-text">Toque no menu de <strong>três pontos</strong> (⋮) no canto superior direito do Chrome</span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">2</span>
+              <span class="bookmark-step-text">Toque no <strong>ícone de estrela</strong> para salvar nos favoritos</span>
+            </li>
+            <li class="bookmark-step">
+              <span class="bookmark-step-num">3</span>
+              <span class="bookmark-step-text">Ou escolha <strong>"Adicionar à tela inicial"</strong> para acesso ainda mais rápido</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
     <!-- HERO -->
     <header class="hero">
       <div class="hero-badge">20 – 22 Março 2026</div>
