@@ -280,36 +280,46 @@ function handleSearch(query) {
 
 const BOOKMARK_DISMISSED_KEY = "lolla2026_bookmark_dismissed";
 
+const bookmarkBar = document.getElementById("bookmarkBar");
+const bookmarkModal = document.getElementById("bookmarkModal");
+const bookmarkBtn = document.getElementById("bookmarkBtn");
+const bookmarkBarDismiss = document.getElementById("bookmarkBarDismiss");
+const bookmarkModalOverlay = document.getElementById("bookmarkModalOverlay");
+const bookmarkModalClose = document.getElementById("bookmarkModalClose");
+const bookmarkTabs = document.querySelectorAll(".bookmark-tab");
+const bookmarkPanels = document.querySelectorAll(".bookmark-panel");
+
+function handleEscKey(e) {
+  if (e.key === "Escape") {
+    closeBookmarkModal();
+  }
+}
+
 function initBookmarkBar() {
-  if (localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
-    document.getElementById("bookmarkBar").style.display = "none";
+  if (!bookmarkBar) {
     return;
   }
 
-  document
-    .getElementById("bookmarkBtn")
-    .addEventListener("click", openBookmarkModal);
-  document
-    .getElementById("bookmarkBarDismiss")
-    .addEventListener("click", dismissBookmarkBar);
-  document
-    .getElementById("bookmarkModalOverlay")
-    .addEventListener("click", closeBookmarkModal);
-  document
-    .getElementById("bookmarkModalClose")
-    .addEventListener("click", closeBookmarkModal);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeBookmarkModal();
-  });
+  if (localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
+    bookmarkBar.style.display = "none";
+    return;
+  }
 
-  document.querySelectorAll(".bookmark-tab").forEach((tab) => {
+  bookmarkBtn?.addEventListener("click", openBookmarkModal);
+  bookmarkBarDismiss.addEventListener("click", dismissBookmarkBar);
+  bookmarkModalOverlay.addEventListener("click", closeBookmarkModal);
+  bookmarkModalClose.addEventListener("click", closeBookmarkModal);
+
+  bookmarkTabs.forEach((tab) => {
     tab.addEventListener("click", () => setBookmarkTab(tab.dataset.tab));
   });
 }
 
 function dismissBookmarkBar() {
   localStorage.setItem(BOOKMARK_DISMISSED_KEY, "1");
-  document.getElementById("bookmarkBar").style.display = "none";
+  if (bookmarkBar) {
+    bookmarkBar.style.display = "none";
+  }
 }
 
 function openBookmarkModal() {
@@ -332,20 +342,26 @@ function openBookmarkModal() {
   else if (/Android/.test(ua)) defaultTab = "android";
 
   setBookmarkTab(defaultTab);
-  document.getElementById("bookmarkModal").classList.add("open");
-  document.body.style.overflow = "hidden";
+  if (bookmarkModal) {
+    bookmarkModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleEscKey);
+  }
 }
 
 function closeBookmarkModal() {
-  document.getElementById("bookmarkModal").classList.remove("open");
-  document.body.style.overflow = "";
+  if (bookmarkModal) {
+    bookmarkModal.classList.remove("open");
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", handleEscKey);
+  }
 }
 
 function setBookmarkTab(tab) {
-  document.querySelectorAll(".bookmark-tab").forEach((t) => {
+  bookmarkTabs.forEach((t) => {
     t.classList.toggle("active", t.dataset.tab === tab);
   });
-  document.querySelectorAll(".bookmark-panel").forEach((p) => {
+  bookmarkPanels.forEach((p) => {
     p.classList.toggle("active", p.dataset.panel === tab);
   });
 }
