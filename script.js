@@ -68,7 +68,6 @@ function renderFavorites() {
               <li class="act-row${isHL ? " headline" : ""}">
                 <span class="act-time">${act.start} – ${act.end}</span>
                 <span class="act-artist">${act.artist}</span>
-                ${isHL ? `<span class="headline-tag" style="--stage-color:${stageColor}">Headliner</span>` : "<span></span>"}
                 <button class="fav-btn active" data-id="${act.id}" aria-label="Remover dos favoritos">${STAR_SVG}</button>
               </li>`;
             })
