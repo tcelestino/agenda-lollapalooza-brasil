@@ -58,7 +58,6 @@ function renderFavorites() {
         <section class="stage-header">
           <span class="stage-dot" style="background:${stageColor}"></span>
           <span class="stage-name">${stage.name}</span>
-          <span class="stage-count">${acts.length} ${acts.length === 1 ? "show" : "shows"}</span>
         </section>
         <ul class="acts-list">
           ${acts
