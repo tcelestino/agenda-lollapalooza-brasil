@@ -38,42 +38,54 @@ function renderFavorites() {
     return;
   }
 
-  const grouped = new Map();
+  const byDay = [];
   scheduleData.days.forEach((day) => {
+    const stageMap = new Map();
     day.stages.forEach((stage) => {
       stage.acts.forEach((act) => {
         if (!favorites.has(act.id)) return;
-        if (!grouped.has(stage.name))
-          grouped.set(stage.name, { stage, acts: [] });
-        grouped.get(stage.name).acts.push(act);
+        if (!stageMap.has(stage.name))
+          stageMap.set(stage.name, { stage, acts: [] });
+        stageMap.get(stage.name).acts.push(act);
       });
     });
+    if (stageMap.size > 0) byDay.push({ day, stages: [...stageMap.values()] });
   });
 
-  container.innerHTML = [...grouped.values()]
-    .map(({ stage, acts }) => {
-      const stageColor = STAGE_COLORS[stage.name] || "#888";
-      return `
-      <div class="fav-group">
-        <section class="stage-header">
-          <span class="stage-dot" style="background:${stageColor}"></span>
-          <span class="stage-name">${stage.name}</span>
-        </section>
-        <ul class="acts-list">
-          ${acts
-            .map((act) => {
-              const isHL = act.headline;
+  container.innerHTML = byDay
+    .map(
+      ({ day, stages }) => `
+      <div class="fav-day">
+        <div class="fav-day-label">${day.label} <span>${formatDate(day.date)}</span></div>
+        <div class="fav-day-stages">
+          ${stages
+            .map(({ stage, acts }) => {
+              const stageColor = STAGE_COLORS[stage.name] || "#888";
               return `
-              <li class="act-row${isHL ? " headline" : ""}">
-                <span class="act-time">${act.start} – ${act.end}</span>
-                <span class="act-artist">${act.artist}</span>
-                <button class="fav-btn active" data-id="${act.id}" aria-label="Remover dos favoritos">${STAR_SVG}</button>
-              </li>`;
+              <div class="fav-group">
+                <section class="stage-header">
+                  <span class="stage-dot" style="background:${stageColor}"></span>
+                  <span class="stage-name">${stage.name}</span>
+                </section>
+                <ul class="acts-list">
+                  ${acts
+                    .map((act) => {
+                      const isHL = act.headline;
+                      return `
+                      <li class="act-row${isHL ? " headline" : ""}">
+                        <span class="act-time">${act.start} – ${act.end}</span>
+                        <span class="act-artist">${act.artist}</span>
+                        <button class="fav-btn active" data-id="${act.id}" aria-label="Remover dos favoritos">${STAR_SVG}</button>
+                      </li>`;
+                    })
+                    .join("")}
+                </ul>
+              </div>`;
             })
             .join("")}
-        </ul>
-      </div>`;
-    })
+        </div>
+      </div>`,
+    )
     .join("");
 
   container.querySelectorAll(".fav-btn").forEach((btn) => {
