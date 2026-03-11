@@ -278,4 +278,100 @@ function handleSearch(query) {
   noResults.style.display = totalFound === 0 ? "block" : "none";
 }
 
+const BOOKMARK_DISMISSED_KEY = "lolla2026_bookmark_dismissed";
+
+const bookmarkBar = document.getElementById("bookmarkBar");
+const bookmarkModal = document.getElementById("bookmarkModal");
+const bookmarkBtn = document.getElementById("bookmarkBtn");
+const bookmarkBarDismiss = document.getElementById("bookmarkBarDismiss");
+const bookmarkModalOverlay = document.getElementById("bookmarkModalOverlay");
+const bookmarkModalClose = document.getElementById("bookmarkModalClose");
+const bookmarkTabs = document.querySelectorAll(".bookmark-tab");
+const bookmarkPanels = document.querySelectorAll(".bookmark-panel");
+
+function handleEscKey(e) {
+  if (e.key === "Escape") {
+    closeBookmarkModal();
+  }
+}
+
+function isRunningAsPWA() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
+function initBookmarkBar() {
+  if (!bookmarkBar) {
+    return;
+  }
+
+  if (isRunningAsPWA() || localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
+    bookmarkBar.style.display = "none";
+    return;
+  }
+
+  bookmarkBtn?.addEventListener("click", openBookmarkModal);
+  bookmarkBarDismiss.addEventListener("click", dismissBookmarkBar);
+  bookmarkModalOverlay.addEventListener("click", closeBookmarkModal);
+  bookmarkModalClose.addEventListener("click", closeBookmarkModal);
+
+  bookmarkTabs.forEach((tab) => {
+    tab.addEventListener("click", () => setBookmarkTab(tab.dataset.tab));
+  });
+}
+
+function dismissBookmarkBar() {
+  localStorage.setItem(BOOKMARK_DISMISSED_KEY, "1");
+  if (bookmarkBar) {
+    bookmarkBar.style.display = "none";
+  }
+}
+
+function openBookmarkModal() {
+  if (window.sidebar && window.sidebar.addPanel) {
+    try {
+      window.sidebar.addPanel(document.title, window.location.href, "");
+      return;
+    } catch (e) {}
+  }
+  if (window.external && "AddFavorite" in window.external) {
+    try {
+      window.external.AddFavorite(window.location.href, document.title);
+      return;
+    } catch (e) {}
+  }
+
+  const ua = navigator.userAgent;
+  let defaultTab = "desktop";
+  if (/iPad|iPhone|iPod/.test(ua)) defaultTab = "ios";
+  else if (/Android/.test(ua)) defaultTab = "android";
+
+  setBookmarkTab(defaultTab);
+  if (bookmarkModal) {
+    bookmarkModal.classList.add("open");
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleEscKey);
+  }
+}
+
+function closeBookmarkModal() {
+  if (bookmarkModal) {
+    bookmarkModal.classList.remove("open");
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", handleEscKey);
+  }
+}
+
+function setBookmarkTab(tab) {
+  bookmarkTabs.forEach((t) => {
+    t.classList.toggle("active", t.dataset.tab === tab);
+  });
+  bookmarkPanels.forEach((p) => {
+    p.classList.toggle("active", p.dataset.panel === tab);
+  });
+}
+
 loadData();
+initBookmarkBar();

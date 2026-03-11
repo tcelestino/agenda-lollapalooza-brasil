@@ -29,6 +29,216 @@ body {
   overflow-x: hidden;
 }
 
+/* === BOOKMARK BAR === */
+.bookmark-bar {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 10px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookmark-bar-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.bookmark-bar-btn:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bookmark-bar-btn svg {
+  flex-shrink: 0;
+}
+
+.bookmark-bar-dismiss {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.bookmark-bar-dismiss:hover {
+  opacity: 1;
+}
+
+/* === BOOKMARK MODAL === */
+.bookmark-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookmark-modal.open {
+  display: flex;
+}
+
+.bookmark-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.bookmark-modal-box {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 480px;
+  width: calc(100% - 48px);
+  z-index: 1;
+  animation: fadeUp 0.25s ease both;
+}
+
+.bookmark-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.bookmark-modal-close:hover {
+  color: var(--text);
+}
+
+.bookmark-modal-title {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+}
+
+.bookmark-modal-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.bookmark-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+}
+
+.bookmark-tab {
+  flex: 1;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.bookmark-tab.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+}
+
+.bookmark-panel {
+  display: none;
+}
+
+.bookmark-panel.active {
+  display: block;
+}
+
+.bookmark-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.bookmark-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.bookmark-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-family: "Unbounded", sans-serif;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.bookmark-step-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+}
+
+.bookmark-step-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.bookmark-step-text kbd {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: "DM Sans", monospace;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
 /* === HERO === */
 .hero {
   position: relative;
