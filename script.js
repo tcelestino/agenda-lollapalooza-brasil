@@ -295,12 +295,19 @@ function handleEscKey(e) {
   }
 }
 
+function isRunningAsPWA() {
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true
+  );
+}
+
 function initBookmarkBar() {
   if (!bookmarkBar) {
     return;
   }
 
-  if (localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
+  if (isRunningAsPWA() || localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
     bookmarkBar.style.display = "none";
     return;
   }
