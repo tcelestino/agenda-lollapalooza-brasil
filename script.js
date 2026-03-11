@@ -34,7 +34,7 @@ function renderFavorites() {
 
   if (favorites.size === 0) {
     container.innerHTML =
-      '<p class="favorites-empty">Favorite os shows que deseja acompanhar de perto.</p>';
+      '<p class="favorites-empty">Seus shows favoritos aparecem aqui. Clique na estrela ao lado do show para salvar.</p>';
     return;
   }
 
