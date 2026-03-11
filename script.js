@@ -278,4 +278,77 @@ function handleSearch(query) {
   noResults.style.display = totalFound === 0 ? "block" : "none";
 }
 
+const BOOKMARK_DISMISSED_KEY = "lolla2026_bookmark_dismissed";
+
+function initBookmarkBar() {
+  if (localStorage.getItem(BOOKMARK_DISMISSED_KEY)) {
+    document.getElementById("bookmarkBar").style.display = "none";
+    return;
+  }
+
+  document
+    .getElementById("bookmarkBtn")
+    .addEventListener("click", openBookmarkModal);
+  document
+    .getElementById("bookmarkBarDismiss")
+    .addEventListener("click", dismissBookmarkBar);
+  document
+    .getElementById("bookmarkModalOverlay")
+    .addEventListener("click", closeBookmarkModal);
+  document
+    .getElementById("bookmarkModalClose")
+    .addEventListener("click", closeBookmarkModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeBookmarkModal();
+  });
+
+  document.querySelectorAll(".bookmark-tab").forEach((tab) => {
+    tab.addEventListener("click", () => setBookmarkTab(tab.dataset.tab));
+  });
+}
+
+function dismissBookmarkBar() {
+  localStorage.setItem(BOOKMARK_DISMISSED_KEY, "1");
+  document.getElementById("bookmarkBar").style.display = "none";
+}
+
+function openBookmarkModal() {
+  if (window.sidebar && window.sidebar.addPanel) {
+    try {
+      window.sidebar.addPanel(document.title, window.location.href, "");
+      return;
+    } catch (e) {}
+  }
+  if (window.external && "AddFavorite" in window.external) {
+    try {
+      window.external.AddFavorite(window.location.href, document.title);
+      return;
+    } catch (e) {}
+  }
+
+  const ua = navigator.userAgent;
+  let defaultTab = "desktop";
+  if (/iPad|iPhone|iPod/.test(ua)) defaultTab = "ios";
+  else if (/Android/.test(ua)) defaultTab = "android";
+
+  setBookmarkTab(defaultTab);
+  document.getElementById("bookmarkModal").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeBookmarkModal() {
+  document.getElementById("bookmarkModal").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+function setBookmarkTab(tab) {
+  document.querySelectorAll(".bookmark-tab").forEach((t) => {
+    t.classList.toggle("active", t.dataset.tab === tab);
+  });
+  document.querySelectorAll(".bookmark-panel").forEach((p) => {
+    p.classList.toggle("active", p.dataset.panel === tab);
+  });
+}
+
 loadData();
+initBookmarkBar();
