@@ -432,7 +432,31 @@ body {
   padding: 4px 0;
 }
 
-#favoritesContainer {
+.fav-day {
+  margin-bottom: 24px;
+}
+
+.fav-day:last-child {
+  margin-bottom: 0;
+}
+
+.fav-day-label {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+}
+
+.fav-day-label span {
+  font-family: "DM Sans", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.fav-day-stages {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 16px;
@@ -484,7 +508,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  #favoritesContainer {
+  .fav-day-stages {
     grid-template-columns: 1fr;
   }
 
