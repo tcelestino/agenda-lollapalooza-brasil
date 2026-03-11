@@ -5,13 +5,98 @@ const STAGE_COLORS = {
   "Palco Perry's": "var(--accent-per)",
 };
 
+const STORAGE_KEY = "lolla2026_favorites";
+const STAR_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>`;
+
 let scheduleData = null;
 let activeDay = 0;
+let favorites = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
+
+function saveFavorites() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify([...favorites]));
+}
+
+function toggleFavorite(actId) {
+  if (favorites.has(actId)) {
+    favorites.delete(actId);
+  } else {
+    favorites.add(actId);
+  }
+  saveFavorites();
+  document.querySelectorAll(`.fav-btn[data-id="${actId}"]`).forEach((btn) => {
+    btn.classList.toggle("active", favorites.has(actId));
+  });
+  renderFavorites();
+}
+
+function renderFavorites() {
+  const container = document.getElementById("favoritesContainer");
+
+  if (favorites.size === 0) {
+    container.innerHTML =
+      '<p class="favorites-empty">Favorite os shows que deseja acompanhar de perto.</p>';
+    return;
+  }
+
+  const grouped = new Map();
+  scheduleData.days.forEach((day) => {
+    day.stages.forEach((stage) => {
+      stage.acts.forEach((act) => {
+        if (!favorites.has(act.id)) return;
+        if (!grouped.has(stage.name))
+          grouped.set(stage.name, { stage, acts: [] });
+        grouped.get(stage.name).acts.push(act);
+      });
+    });
+  });
+
+  container.innerHTML = [...grouped.values()]
+    .map(({ stage, acts }) => {
+      const stageColor = STAGE_COLORS[stage.name] || "#888";
+      return `
+      <div class="fav-group">
+        <section class="stage-header">
+          <span class="stage-dot" style="background:${stageColor}"></span>
+          <span class="stage-name">${stage.name}</span>
+          <span class="stage-count">${acts.length} ${acts.length === 1 ? "show" : "shows"}</span>
+        </section>
+        <ul class="acts-list">
+          ${acts
+            .map((act) => {
+              const isHL = act.headline;
+              return `
+              <li class="act-row${isHL ? " headline" : ""}">
+                <span class="act-time">${act.start} – ${act.end}</span>
+                <span class="act-artist">${act.artist}</span>
+                ${isHL ? `<span class="headline-tag" style="--stage-color:${stageColor}">Headliner</span>` : "<span></span>"}
+                <button class="fav-btn active" data-id="${act.id}" aria-label="Remover dos favoritos">${STAR_SVG}</button>
+              </li>`;
+            })
+            .join("")}
+        </ul>
+      </div>`;
+    })
+    .join("");
+
+  container.querySelectorAll(".fav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => toggleFavorite(Number(btn.dataset.id)));
+  });
+}
 
 function init() {
+  let actId = 0;
+  scheduleData.days.forEach((day) => {
+    day.stages.forEach((stage) => {
+      stage.acts.forEach((act) => {
+        act.id = actId++;
+      });
+    });
+  });
+
   buildTabs();
   renderDay(0);
   setupSearch();
+  renderFavorites();
 }
 
 async function loadData() {
@@ -81,8 +166,6 @@ function createStageCard(stage, filterText) {
   }
   if (acts.length === 0) return null;
 
-  const shortName = stage.name.replace("Palco ", "");
-
   card.innerHTML = `
     <section class="stage-header">
       <span class="stage-dot" style="background:${stageColor}"></span>
@@ -97,11 +180,16 @@ function createStageCard(stage, filterText) {
           <li class="act-row${isHL ? " headline" : ""}">
             <span class="act-time">${act.start} – ${act.end}</span>
             <span class="act-artist">${act.artist}</span>
-            ${isHL ? `<span class="headline-tag" style="--stage-color:${stageColor}">Headliner</span>` : ""}
+            ${isHL ? `<span class="headline-tag" style="--stage-color:${stageColor}">Headliner</span>` : "<span></span>"}
+            <button class="fav-btn${favorites.has(act.id) ? " active" : ""}" data-id="${act.id}" aria-label="Favoritar">${STAR_SVG}</button>
           </li>`;
         })
         .join("")}
     </ul>`;
+
+  card.querySelectorAll(".fav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => toggleFavorite(Number(btn.dataset.id)));
+  });
 
   return card;
 }
